@@ -1,0 +1,15 @@
+OSSEC’s RPMs are made available by AtomiCorp.
+
+# Install ossec manager packages
+yum install ossec-hids ossec-hids-server
+
+# Edit the /var/ossec/etc/ossec.conf
+# Here you can edit the email address, frequency check (default is set to 22 hours, update the syslog IP tp forward the logs to)
+
+# Enable client syslog
+var/ossec/bin/ossec-control enable client-syslog
+
+# Start ossec manager.
+/var/ossec/bin/ossec-control start
+
+# To enable ossec authd feature
