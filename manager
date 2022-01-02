@@ -13,3 +13,14 @@ var/ossec/bin/ossec-control enable client-syslog
 /var/ossec/bin/ossec-control start
 
 # To enable ossec authd feature
+
+
+
+
+
+### Troubleshooting:
+# To view the config file here /var/ossec/etc/ossec.conf on the server side or /var/ossec/etc/ossec-agent.conf
+# To view the ossec logs here  /var/ossec/logs/ossec.log
+To view the status of OSSEC HIDS: /var/ossec/bin/ossec-control status
+To start OSSEC HIDS: /var/ossec/bin/ossec-control start
+To stop OSSEC HIDS:/var/ossec/bin/ossec-control stop
