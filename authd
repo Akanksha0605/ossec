@@ -1,0 +1,29 @@
+#This script can be used to automate the process of connecting clients with the ossec manager using authd feature.
+# It will restart if the client.key is already present or use authd.pass to add and create a new client.
+
+#!/bin/bash
+
+# If client keys are present then restart ossec else register using a password.
+
+if ( -s /var/ossec/etc/client.keys ) {
+   Log "client key is present"
+   $SSHSession.ExecuteCommand("sudo /var/ossec/bin/ossec-control restart")
+} else {
+   Log "client key is NOT present"
+
+
+# Authenticate using a password.
+$SSHSession.ExecuteCommand("sudo /var/ossec/bin/agent-auth -m "${ossecIP}" -P /var/ossec/etc/authd.pass")
+
+    if [ $? -eq 0 ]
+    then
+     echo "The client key is successfully added"
+    exit 0
+    else
+     echo "The client key failed" >&2
+    exit 1
+    fi
+
+# Restart ossec agent
+$SSHSession.ExecuteCommand("sudo /var/ossec/bin/ossec-control restart) 
+fi
