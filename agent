@@ -1,0 +1,21 @@
+# Install ossec agent
+yum install ossec-hids ossec-hids-agent
+
+#Edit config file. Add the manager IP.
+vi /var/ossec/etc/ossec-agent.conf
+
+# To connect we will use the agent-auth feature using a password which is stored in /var/ossec/etc/authd.pass
+sudo /var/ossec/bin/agent-auth -m <manager IP> -P /var/ossec/etc/authd.pass
+
+
+Example:
++ sudo /var/ossec/bin/agent-auth -m <manager IP> -P /var/ossec/etc/authd.pass
+2021/04/30 20:57:12 ossec-authd: INFO: Started (pid: 13662).
+INFO: Using specified password.
+2021/04/30 20:57:12 INFO: Connected to <manager ip> at address <manager ip>, port 1515
+INFO: Connected to <manager ip>:1515
+INFO: Using agent name as: agentname
+INFO: Send request to manager. Waiting for reply.
+INFO: Received response with agent key
+INFO: Valid key created. Finished.
+INFO: Connection closed.
