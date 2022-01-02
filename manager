@@ -13,9 +13,9 @@ var/ossec/bin/ossec-control enable client-syslog
 /var/ossec/bin/ossec-control start
 
 # To enable ossec authd feature
-
-
-
+# Edit /var/ossec/etc/authd.pass which will be used to accept connections from the client.
+# verify ossec-authd is in listening mode and syslog is enable.
+ps auxw | grep ossec
 
 
 ### Troubleshooting:
